@@ -7,7 +7,7 @@
                 blog</span></nuxt-link>
         <div class="d-flex ga-6">
             <nuxt-link class="text-body-1" v-for="item of menu" :to="item.path">{{ item.title
-                }}</nuxt-link>
+            }}</nuxt-link>
         </div>
     </div>
     <v-divider></v-divider>
@@ -19,8 +19,8 @@ const menu = [
         path: "/photography"
     },
     {
-        title: "Contact",
-        path: "/contact"
+        title: "About",
+        path: "/about"
     },
 ]
 </script>

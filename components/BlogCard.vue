@@ -15,7 +15,7 @@
             <img class="hidden-sm-and-down" style="border-radius: 6px;" :src="img" width="250px"></img>
         </div>
         <div v-else>
-            <div class="d-flex flex-column align-center justify-center">
+            <div class="d-flex flex-column align-center justify-center py-2">
                 <div class="d-flex align-center justify-space-between w-100">
                     <div class="d-flex flex-column px-4">
                         <div id="card-title">
