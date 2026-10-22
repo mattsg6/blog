@@ -11,7 +11,7 @@
         </v-row>
         <v-row class="mt-0">
             <v-col cols="12">
-                <div class="d-flex flex-column ga-5" v-html="text"></div>
+                <div id="post" class="d-flex flex-column ga-5" v-html="text"></div>
             </v-col>
         </v-row>
     </v-container>
@@ -53,9 +53,14 @@ function createImageTag(t) {
     const attrs = t.split(";");
     const obj = {};
     for (const attr of attrs) {
-        const [key, value] = attr.split("=");
+        const [key, value] = attr.split("#");
         obj[key] = value;
     }
     return `<div class="d-flex flex-column ga-1 justify-center align-center"><img src="${obj.img}" width=${obj.size}/><span class="text-caption">${obj.caption}</span></div>`
 }
 </script>
+<style scoped>
+#post :deep(a) {
+    text-decoration: underline !important;
+}
+</style>
