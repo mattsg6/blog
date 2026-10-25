@@ -1,8 +1,11 @@
 <template>
+    <!-- nav bar -->
     <nav-bar></nav-bar>
+    <!-- body -->
     <div id="body">
         <slot />
     </div>
+    <!-- footer -->
     <blog-footer></blog-footer>
 </template>
 <style scoped>
