@@ -9,7 +9,7 @@
             <v-col v-if="photos.length" v-for="photo of photos" cols="12" md="6">
                 <v-card :to="`/photography/${photo.id}`" variant="outlined" hover>
                     <div class="d-flex justify-center flex-column pa-3 ga-1">
-                        <img :src="photo.img" width="100%" />
+                        <nuxt-img :src="photo.img" width="100%" />
                         <span class="text-body-2">{{ photo.title }}</span>
                     </div>
                 </v-card>

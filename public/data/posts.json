@@ -1,5 +1,12 @@
 [
   {
+    "id": "hobby-horsin-around",
+    "title": "Hobby Horsin' Around",
+    "date": "Nov 1, 2026",
+    "description": "My favorite thing about hobbies is that they never end. That's why learning a language can be maddening.",
+    "img": "/posts/hobby-horsin-around/path_of_the_gods.jpg"
+  },
+  {
     "id": "blogger-and-me",
     "title": "Blogger and Me",
     "date": "Oct 23, 2026",
