@@ -39,25 +39,39 @@ await useFetch(`/posts/${pageId}/p.txt`).then(({ data, error }) => {
     }
     const chunks = data.value.split("\n");
     let t = "";
+    let footnote = 1;
     for (const chunk of chunks) {
-        if (chunk.slice(0, 3) === 'img') {
-            t += createImageTag(chunk);
-        } else if (chunk) {
-            t += `<span class="text-body-1">${chunk.replace("{END}", "&#9724;")}</span>`
+        if (chunk.slice(0, 4) === 'img#') {
+            t += createTag(chunk, 'img');
+        } else if (chunk.slice(0, 9) === 'footnote#') {
+            t += createTag(chunk, 'footnote');
+        }
+        else if (chunk) {
+            let tChunk = chunk.replace("{END}", "&#9724;");
+            while (tChunk.includes("FOOTNOTE")) {
+                tChunk = tChunk.replace("FOOTNOTE", `<sup><a id="footnote-${footnote}" href="#footnote-${footnote}-text" style="text-decoration: none !important;">${footnote}</a></sup>`);
+                footnote++;
+            }
+            t += `<span class="text-body-1">${tChunk}</span>`
         }
     }
     text.value = t;
 });
 
-function createImageTag(t) {
+function createTag(t, tagType) {
     const attrs = t.split(";");
     const obj = {};
     for (const attr of attrs) {
         const [key, value] = attr.split("#");
         obj[key] = value;
     }
-    return `<div class="d-flex flex-column ga-1 justify-center align-center"><img src="${obj.img}" width=${obj.size}/><span class="text-caption">${obj.caption}</span></div>`
+    if (tagType === 'img') {
+        return `<div class="d-flex flex-column ga-1 justify-center align-center"><img src="${obj.img}" width=${obj.size}/><span class="text-caption">${obj.caption}</span></div>`;
+    } else if (tagType === 'footnote') {
+        return `<span class="text-caption" id="footnote-${obj.num}-text"><a href="#footnote-${obj.num}">${obj.num}.</a> ${obj.footnote}</span>`
+    }
 }
+
 </script>
 <style scoped>
 #post :deep(a) {
