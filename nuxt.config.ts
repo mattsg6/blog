@@ -46,5 +46,5 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@nuxtjs/device', '@nuxt/image'],
+  modules: ['@nuxtjs/device'],
 })
