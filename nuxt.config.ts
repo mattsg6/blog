@@ -1,50 +1,54 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   nitro: {
-   preset: 'github-pages'
- },
+    preset: "github_pages",
+  },
+
+  image: {
+    provider: 'none'
+  },
 
   app: {
-    baseURL: '/',
-    buildAssetsDir: 'assets',
+    baseURL: "/",
+    buildAssetsDir: "assets",
     head: {
       link: [
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'
-        }
-      ]
-    }
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+        },
+      ],
+    },
   },
 
   routeRules: {
-    '/**': { prerender: true }
+    "/**": { prerender: true },
   },
 
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
   ssr: false,
 
   build: {
-    transpile: ['vuetify'],
+    transpile: ["vuetify"],
   },
 
-  css: [
-    '~/assets/global.scss'
-  ],
+  css: ["~/assets/global.scss"],
 
   vite: {
-    plugins: [
-      vuetify({ autoImport: true }),
-    ],
+    plugins: [vuetify({ autoImport: true })],
     vue: {
       template: {
         transformAssetUrls,
       },
     },
   },
-  modules: ['@nuxtjs/device', '@nuxt/image'],
-})
+  modules: ["@nuxtjs/device", "@nuxt/image"],
+});
