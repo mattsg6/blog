@@ -32,18 +32,21 @@ const route = useRoute();
 const pageId = route.params.id;
 const photoData = ref({});
 const images = ref([]);
-await useFetch(`/images/photography/${pageId}/meta.json`).then(({ data }) => {
-    if (!data.value?.title) {
-        throw createError({
-            status: 404,
-            statusText: 'Photo collection not found',
-            message: 'This collection probably does not exist. Weird...',
-            fatal: true
-        });
-    }
-    photoData.value = data.value;
-    images.value = data.value.photos.map(i => `/images/photography/${pageId}/${i}`);
+onMounted(async () => {
+    await useFetch(`/images/photography/${pageId}/meta.json`).then(({ data }) => {
+        if (!data.value?.title) {
+            throw createError({
+                status: 404,
+                statusText: 'Photo collection not found',
+                message: 'This collection probably does not exist. Weird...',
+                fatal: true
+            });
+        }
+        photoData.value = data.value;
+        images.value = data.value.photos.map(i => `/images/photography/${pageId}/${i}`);
+    })
 })
+
 const currImageIndex = ref("");
 function openDialog(index) {
     if (window.innerWidth <= 959) {
