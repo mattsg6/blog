@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid id="landing" v-if="posts?.length">
+    <v-container fluid id="landing">
         <v-row class="mt-3">
             <v-col cols="12" class="d-flex justify-center">
                 <blog-card :title="latest.title" :date="latest.date" :description="latest.description" :img="latest.img"
@@ -15,15 +15,12 @@
     </v-container>
 </template>
 <script setup>
-const latest = ref({});
-const posts = ref([]);
-onMounted(async () => {
-    await useFetch('/data/posts.json').then((response) => {
-        const data = response.data.value;
-        if (data) {
-            latest.value = data[0];
-            posts.value = data.slice(1);
-        }
-    })
+const { data } = await useFetch('/data/posts.json');
+const latest = computed(() => data.value[0]);
+const posts = computed(() => {
+    if (data.value?.length > 1) {
+        return data.value.slice(1)
+    }
+    return []
 })
 </script>

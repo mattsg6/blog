@@ -12,7 +12,7 @@
                     <span class="text-body-2">{{ description }}</span>
                 </div>
             </div>
-            <nuxt-img class="hidden-sm-and-down" style="border-radius: 6px;" :src="img" width="250px"></nuxt-img>
+            <img class="hidden-sm-and-down" style="border-radius: 6px;" :src="img" width="250px"></img>
         </div>
         <div v-else>
             <div class="d-flex flex-column align-center justify-center py-2">

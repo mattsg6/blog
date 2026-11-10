@@ -5,7 +5,7 @@
                 <span class="text-h5">Photography</span>
             </v-col>
         </v-row>
-        <v-row v-if="photos">
+        <v-row>
             <v-col v-if="photos.length" v-for="photo of photos" cols="12" md="6">
                 <v-card :to="`/photography/${photo.id}`" variant="outlined" hover>
                     <div class="d-flex justify-center flex-column pa-3 ga-1">
@@ -18,12 +18,8 @@
     </v-container>
 </template>
 <script setup>
-const photos = ref([]);
-onMounted(async () => {
-    const { data } = await useFetch("/data/photography.json");
-    photos.value = data.value;
-})
-
+const { data } = await useFetch("/data/photography.json");
+const photos = computed(() => data.value)
 </script>
 <style scoped>
 .v-card {
