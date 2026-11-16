@@ -12,7 +12,8 @@
                     <span class="text-body-2">{{ description }}</span>
                 </div>
             </div>
-            <img class="hidden-sm-and-down" style="border-radius: 6px;" :src="img" width="250px"></img>
+            <img class="hidden-sm-and-down" style="border-radius: 6px;"
+                :src="`https://blog.matthew-gilmore.com/cdn-cgi/image/fit=scale-down${img}`" width="250px"></img>
         </div>
         <div v-else>
             <div class="d-flex flex-column align-center justify-center py-2">
@@ -25,7 +26,9 @@
                             <span class="text-caption">{{ date }}</span>
                         </div>
                     </div>
-                    <img class="hidden-sm-and-down pa-2" style="border-radius: 12px;" :src="img" width="150px"></img>
+                    <img class="hidden-sm-and-down pa-2" style="border-radius: 12px;"
+                        :src="`https://blog.matthew-gilmore.com/cdn-cgi/image/fit=scale-down${img}`"
+                        width="150px"></img>
                 </div>
                 <div id="card-text" class="px-4 py-2">
                     <span class="text-body-2">{{ description }}</span>

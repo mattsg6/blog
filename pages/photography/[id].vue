@@ -10,14 +10,17 @@
         </v-row>
         <v-row v-if="images?.length > 0">
             <v-col v-for="n of images.length" cols="12" md="6">
-                <img class="image-box" @click="openDialog(n - 1)" :src="images[n - 1]" width="100%" />
+                <img class="image-box" @click="openDialog(n - 1)"
+                    :src="`https://blog.matthew-gilmore.com/cdn-cgi/image/fit=scale-down${images[n - 1]}`"
+                    width="100%" />
             </v-col>
         </v-row>
         <v-dialog v-model="dialog" width="auto" height="90vh" @keydown.right="moveRight" @keydown.left="moveLeft">
             <v-card width="75vw" height="90vh">
                 <div class="pa-5 d-flex ga-3 align-center justify-center h-100">
                     <v-icon @click="moveLeft" icon="mdi-chevron-left" class="mx-5"></v-icon>
-                    <img :src="images[currImageIndex]" style="min-width: 90%;" />
+                    <img :src="`https://blog.matthew-gilmore.com/cdn-cgi/image/fit=scale-down${images[currImageIndex]}`"
+                        style="min-width: 90%;" />
                     <v-icon @click="moveRight" icon="mdi-chevron-right" class="mx-5"></v-icon>
                 </div>
                 <v-icon @click="dialog = false" icon="mdi-close" size="small"
