@@ -77,4 +77,8 @@ function createTag(t, tagType) {
 #post :deep(a) {
     text-decoration: underline !important;
 }
+
+#post :deep(.text-body-1) {
+    font-size: 1.15rem !important;
+}
 </style>
