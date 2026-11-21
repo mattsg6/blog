@@ -1,5 +1,12 @@
 [
   {
+    "id": "autumn-leaves",
+    "title": "Autumn Leaves",
+    "date": "Nov 20, 2026",
+    "description": "\"The falling leaves drift by the window, the autumn leaves of red and gold...\"",
+    "img": "/posts/autumn-leaves/biltmore_view.jpg"
+  },
+  {
     "id": "hobby-horsin-around",
     "title": "Hobby Horsin' Around",
     "date": "Nov 1, 2026",

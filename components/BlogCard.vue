@@ -12,8 +12,9 @@
                     <span class="text-body-2">{{ description }}</span>
                 </div>
             </div>
-            <img class="hidden-sm-and-down" style="border-radius: 6px;"
+            <img v-if="!imgError" @error="imgError = true" class="hidden-sm-and-down" style="border-radius: 6px;"
                 :src="`https://blog.matthew-gilmore.com/cdn-cgi/image/fit=scale-down${img}`" width="250px"></img>
+            <img v-else class="hidden-sm-and-down" style="border-radius: 6px;" :src="img" width="250px"></img>
         </div>
         <div v-else>
             <div class="d-flex flex-column align-center justify-center py-2">
@@ -46,6 +47,7 @@ const props = defineProps({
     img: String,
     isLatest: Boolean
 });
+const imgError = ref(false);
 </script>
 <style scoped>
 .v-card {
